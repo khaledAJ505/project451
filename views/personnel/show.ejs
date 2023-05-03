@@ -1,0 +1,105 @@
+<%- include('../partials/boilerplate1')%>
+<%- include('../partials/flash')%>
+<%- include('../partials/navbar')%>
+<body>
+    <div class="container">
+        <div class="container my-4">
+            <form class="form-inline my-2 my-lg-0" action="/patients/search" method="GET">
+              <input class="form-control mr-sm-2" type="search" placeholder="Search by phone number" aria-label="Search" name="phone">
+              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+          </div>
+      <h1 class="my-4 text-center">All Patients</h1>
+      <div class="row">
+        <% for (let patient of patients) { %>
+        <div class="col-md-4 mb-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <h4 class="card-title" style="text-align: center;"><%= patient.Fullname %></h4>
+              <br>
+              <p class="card-text"><b>Phone:</b> <%= patient.phoneno %></p>
+              <p class="card-text"><b>Medical Condition:</b> <%= patient.medcondition %></p>
+              <% if (patient.vaccine1){ %>
+                <p class="card-text"><b>vaccine 1: </b> Taken</p>
+
+              <%}%>
+
+              <% if (!patient.vaccine1){ %>
+                <p class="card-text"><b>vaccine 1: </b> Not taken</p>
+
+              <%}%>
+              <% if (patient.vaccine2){ %>
+                <p class="card-text"><b>vaccine 2: </b> Taken</p>
+
+              <%}%>
+
+              <% if (!patient.vaccine2){ %>
+                <p class="card-text"><b>vaccine 2: </b> Not taken</p>
+
+              <%}%>
+              <p class="card-text"><b>Vaccine 1 assigned time: </b> <%= patient.assignedtimeslotv1 %></p>
+              <p class="card-text"><b>Vaccine 2 assigned time </b><%= patient.assignedtimeslotv2 %></p>
+              <div class="row"> 
+                <div class="col">
+                <a href="/<%= patient._id %>" class="btn btn-primary">View Profile</a>
+              </div>
+
+                <% if (patient.vaccine1 && !patient.assignedtimeslotv2){ %>
+                    <div class="col">
+                      <form action="/setv2/<%=patient._id%>" method="POST" class="validated-form" novalidate>
+                        <button type="submit" class="btn btn-warning">Assign time for dose 2</button>
+                      </form>
+                    </div>
+
+               
+
+                <%}%>
+                <% if (!patient.vaccine1){ %>
+                  <div class="col">
+
+                  <form action="/setv1taken/<%=patient._id%>" method="POST" class="validated-form" novalidate>
+                      <button type="submit" class="btn btn-success">Dose1 taken</button>
+                    </form>
+                  </div>
+                <%}%>
+                <% if (!patient.vaccine2 &&patient.vaccine1){ %>
+                  <div class="col">
+                    <form action="/setv2taken/<%=patient._id%>" method="POST" class="validated-form" novalidate>
+                      <button type="submit" class="btn btn-success">Dose2 taken</button>
+                    </form>
+                  </div>
+       
+                <%}%>
+
+
+
+              </div>
+
+              
+            </div>
+          </div>
+        </div>
+        <% } %>
+      </div>
+    </div>
+    <!-- Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+
+
+<%- include('../partials/footer')%>
+<%- include('../partials/boilerplate2')%>

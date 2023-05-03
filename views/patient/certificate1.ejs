@@ -1,0 +1,64 @@
+
+
+<!DOCTYPE html >
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Certificate</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+  <div id="certificate" class="container-fluid mt-5">
+    <div class="row justify-content-center">
+      <div class="col-8">
+        <div class="card">
+          <div class="card-body">
+            <h1 class="text-center bg-light">Certificate of Vaccination</h1>
+            <hr>
+            <p>This certificate is presented to</p>
+            <h2 class="text-center"><%= data.patient.Fullname %></h2>
+            <p>for receiving the COVID-19 <b>dose 1 vaccine</b> on:</p>
+            <h3 class="text-center"><%= data.patient.assignedtimeslotv1 %></h3>
+            <hr>
+            <div class="row justify-content-center">
+              <div class="col-sm-6 text-center">
+                <h4>Medical personnel</h4>
+                <p>Name:<%= data.personnel.Fullname%> </p>
+                <p>Email:<%= data.personnel.email%></p>
+              </div>
+            </div>
+            <hr>
+            <p class="text-center">This certificate is proof that the above-named individual has been fully vaccinated against COVID-19 in accordance with the Centers for Disease Control and Prevention (CDC) guidelines.</p>
+            <button id="download-pdf-button">Download PDF</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+
+
+
+  // Get the button element
+  const button = document.getElementById('download-pdf-button');
+
+  // Add a click event listener to the button
+  button.addEventListener('click', () => {
+    // Create a new jsPDF instance
+    const doc = new jsPDF();
+
+    // Get the HTML content of the page
+    const html = document.querySelector('html').outerHTML;
+
+    // Generate the PDF document
+    doc.fromHTML(html);
+
+    // Download the PDF file
+    doc.save('my-document.pdf');
+  });
+</script>
+

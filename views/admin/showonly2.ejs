@@ -1,0 +1,52 @@
+<%- include('../partials/boilerplate1')%>
+<%- include('../partials/flash')%>
+<%- include('../partials/navbar')%>
+<body>
+    <div class="container">
+        <div class="container my-4">
+            <form class="form-inline my-2 my-lg-0" action="/med/search" method="GET">
+              <input class="form-control mr-sm-2" type="search" placeholder="Search by phone number" aria-label="Search" name="phone">
+              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+          </div>
+      <h1 class="my-4 text-center">Search results: </h1>
+      <div class="row">
+        <% for (let p of personnels) { %>
+        <div class="col-md-4 mb-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <h4 class="card-title" style="text-align: center;"><%= p.Fullname %></h4>
+              <br>
+              <p class="card-text"><b>Username:</b> <%= p.username %></p>
+
+              <p class="card-text"><b>ID:</b> <%= p.ID %></p>
+              <p class="card-text"><b>phone number:</b> <%= p.phoneno %></p>
+              <p class="card-text"><b>Email:</b> <%= p.email %></p>
+      
+            </div>
+          </div>
+        </div>
+        <% } %>
+      </div>
+    </div>
+    <!-- Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+
+
+<%- include('../partials/footer')%>
+<%- include('../partials/boilerplate2')%>

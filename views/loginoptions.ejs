@@ -1,0 +1,70 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>AUBCOVAX</title>
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+	<!-- Navigation Bar -->
+	<!-- Navigation Bar -->
+  <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">AUBCOVAX</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-link" href="/">Home</a>
+            </div>
+            <div class="navbar-nav ml-auto">
+                <% if(!currentUser) {%>
+                <a class="nav-link" href="/login">Login</a>
+                <a class="nav-link" href="/register">Register</a>
+                <% } else {%>
+                <a class="nav-link" href="/logout">Logout</a>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</nav>
+
+	<!-- Jumbotron -->
+
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6 text-center">
+      <h2 class="mb-3">Choose Login Option</h2>
+      <div class="row">
+        <div class="col-sm-6 mb-3">
+          <a href="/login" class="btn btn-primary btn-block">Patient Login</a>
+        </div>
+        <div class="col-sm-6 mb-3">
+          <a href="med/loginp" class="btn btn-primary btn-block">Medical Personnel Login</a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 mb-3">
+          <a href="/admin/loginp" class="btn btn-primary btn-block">Admin Login</a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <p>Don't have an account? <a href="/register">Register here (For patients only)</a>.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+	<!-- Footer -->
+  <footer class="footer bg-dark py-3 mt-auto">
+    <div class="container">
+        <span class="text-muted">&copy; AUBCOVAX 2023</span>
+    </div>
+</footer>

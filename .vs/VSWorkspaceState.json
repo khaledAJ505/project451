@@ -1,0 +1,12 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\controllers",
+    "\\models",
+    "\\routes",
+    "\\views",
+    "\\views\\patient",
+    "\\views\\personnel"
+  ],
+  "PreviewInSolutionExplorer": false
+}

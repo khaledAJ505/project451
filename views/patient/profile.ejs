@@ -1,0 +1,74 @@
+<%- include('../partials/boilerplate1')%>
+<%- include('../partials/flash')%>
+<%- include('../partials/navbar')%>
+
+<div class="container my-4">
+    <div class="row">
+      <div class="col-md-8 mx-auto">
+        <div class="card">
+          <div class="card-header">
+            <h1 class="card-title text-center"><%=patient.Fullname %></h1>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-6">
+                <p class="card-text"><b>DOB:</b> <%= patient.DOB %></p>
+                <p class="card-text"><b>ID:</b> <%= patient.ID %></p>
+                <p class="card-text"><b>Phone Number:</b> <%=patient.phoneno %></p>
+                <p class="card-text"><b>Email:</b> <%=patient.email %></p>
+                <p class="card-text"><b>Country/City:</b> <%=patient.Country %>/<%=patient.City %></p>
+                <p class="card-text"><b>Medical conditions:</b> <%=patient.medcondition %></p>
+
+              </div>
+              <div class="col-md-6">
+                <h5 class="card-subtitle mb-2">Vaccination Status</h5>
+                <% if (patient.vaccine1) {%>
+
+                    <p class="card-text"> <b>Dose 1:</b> <div class="alert alert-success" role="alert">
+                        Taken
+                      </div> </p>
+                      <a href="/certificate1/<%= patient._id %>" class="btn btn-success">Get Certificate for Dose 1</a>
+                <% } %>
+
+                <% if(!patient.vaccine1) { %>
+                    <p class="card-text"> <b>Dose 1:</b> <div class="alert alert-danger" role="alert">
+                       Not Taken!
+                      </div> </p>
+                      <p class="card-text"><b>Assigned time for vaccine 1:</b> <%=patient.assignedtimeslotv1 %></p>
+                    <%} %>
+
+                    <% if (patient.vaccine2) {%>
+
+                        <p class="card-text"> <b>Dose 1:</b> <div class="alert alert-success" role="alert">
+                            Taken
+                          </div> </p>
+                          <a href="/certificate2/<%= patient._id %>" class="btn btn-success">Get Certificate for Dose 2</a>
+                    <% } %>
+    
+                    <% if(!patient.vaccine2) { %>
+                        <p class="card-text"> <b>Dose 2:</b> <div class="alert alert-danger" role="alert">
+                           Not Taken!
+                          </div> </p>
+                          
+                          <% if(patient.assignedtimeslotv2) { %>
+                          <p class="card-text"><b>Assigned time for vaccine 2:</b> <%=patient.assignedtimeslotv2 %></p>
+                          <%} %>
+
+                          <% if(!patient.assignedtimeslotv2) { %>
+                            <p class="card-text"><b>Assigned time for vaccine 2:</b>  Not assigned yet</p>
+                            <%} %>
+
+                        <%} %>
+              </div>
+              <div class="col">
+            
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<%- include('../partials/footer')%>
+<%- include('../partials/boilerplate2')%>

@@ -1,0 +1,69 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>AUBCOVAX</title>
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+	<!-- Navigation Bar -->
+    <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">AUBCOVAX</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link" href="/admin/homep">Home</a>
+                </div>
+                <div class="navbar-nav ml-auto">
+                    <% if(currentUser) {%>
+                        <a class="nav-link" href="/logout">Logout</a>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+	<!-- Jumbotron -->
+	<div class="jumbotron jumbotron-fluid">
+		<div class="container">
+			<h1 class="display-4">Welcome to AUBCOVAX (Admin PAGE)</h1>
+			<p class="lead">The one-stop destination for managing your COVID-19 vaccinations.</p>
+			<a class="btn btn-primary btn-lg" href="/admin/showp" role="button">Show patients</a>
+			<a class="btn btn-primary btn-lg" href="/admin/showdoctors" role="button">show doctors</a>
+
+		</div>
+	</div>
+
+	<!-- About Section -->
+	<div class="container container-fluid">
+		<div class="row">
+			<div class="col-md-4">
+				<h2>About Us</h2>
+				<p>AUBCOVAX is a mobile application that helps manage the vaccination process for specific populations or countries. Our application provides medical teams with an interface to confirm vaccination doses and patients with an interface to register for the vaccine and view their certificates.</p>
+			</div>
+			<div class="col-md-4">
+				<h2>How it Works</h2>
+				<p>Patients can register for the vaccine on our platform and receive appointment notifications. Medical teams can use our interface to confirm vaccination doses and manage the vaccination process efficiently.</p>
+			</div>
+			<div class="col-md-4">
+				<h2>Contact Us</h2>
+				<p>For any inquiries or feedback, please reach out to us at:</p>
+				<p><strong>Email:</strong> info@aubcovax.com</p>
+				<p><strong>Phone:</strong> +961 1 350 000</p>
+			</div>
+		</div>
+	</div>
+
+	<!-- Footer -->
+    <footer class="footer bg-dark py-3 mt-auto">
+        <div class="container">
+            <span class="text-muted">&copy; AUBCOVAX 2023</span>
+        </div>
+    </footer>
